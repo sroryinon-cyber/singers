@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0d10">
+<title>{{name}} · {{band}}</title>
+<meta name="description" content="{{name}} על הבמה – להקת {{band}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{name}} · להקת {{band}}">
+<meta property="og:description" content="צפו ב{{firstName}} על הבמה">
+{{ogImage}}
+<link rel="preload" as="image" href="../images/{{photo}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d10;
+  --surface:#151a20;
+  --line:#262d36;
+  --text:#f4f1ea;
+  --muted:#a9a79f;
+  --accent:#4fd1c5;      /* צבע המבטא – משנים כאן */
+  --wa:#25d366;
+  --radius:18px;
+  --gutter:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Heebo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  font-size:17px;line-height:1.6;
+  padding-bottom:calc(92px + env(safe-area-inset-bottom));
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1040px;margin-inline:auto;padding-inline:var(--gutter)}
+
+/* ---------- פתיחה ---------- */
+.hero{position:relative;min-height:86svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(11,13,16,.15) 0%,rgba(11,13,16,0) 30%,rgba(11,13,16,.72) 70%,var(--bg) 100%);
+}
+.hero-text{position:relative;z-index:1;width:100%;padding:0 var(--gutter) 34px}
+.eyebrow{
+  margin:0 0 6px;font-size:14px;font-weight:500;letter-spacing:.14em;color:var(--accent);
+}
+h1{
+  margin:0;font-weight:800;line-height:1;
+  font-size:clamp(52px,16vw,104px);letter-spacing:-.01em;text-wrap:balance;
+}
+.tagline{margin:14px 0 0;font-size:19px;font-weight:300;color:var(--text);max-width:30ch}
+.scroll-cue{
+  display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+  font-size:16px;font-weight:500;text-decoration:none;color:var(--text);
+  border:1px solid rgba(244,241,234,.35);border-radius:999px;padding:10px 20px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:rgba(11,13,16,.25);
+}
+.scroll-cue svg{width:16px;height:16px}
+
+/* ---------- אזורים ---------- */
+section{padding-block:44px}
+h2{margin:0 0 18px;font-size:26px;font-weight:800;line-height:1.2;text-wrap:balance}
+h2 span{color:var(--accent)}
+
+/* ---------- סרטונים ---------- */
+.featured-wrap{display:flex;justify-content:center;margin-bottom:10px}
+.videos{
+  display:flex;align-items:flex-start;gap:10px;overflow-x:auto;
+  scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);
+  margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);
+  scrollbar-width:none;
+}
+.videos::-webkit-scrollbar{display:none}
+.video{
+  position:relative;flex:none;width:42vw;max-width:190px;aspect-ratio:9/16;
+  scroll-snap-align:start;border:0;padding:0;margin:0;cursor:pointer;
+  background:var(--surface);border-radius:var(--radius);overflow:hidden;
+  color:var(--text);font:inherit;text-align:start;
+  -webkit-tap-highlight-color:transparent;
+}
+.video.wide{width:80vw;max-width:420px;aspect-ratio:16/9}
+.video.featured{width:100%;max-width:calc(80svh * 9 / 16)}
+.video.featured.wide{max-width:none}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.video.ready img{opacity:1}
+.video::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,0) 45%);
+}
+.play{
+  position:absolute;z-index:1;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(11,13,16,.5);border:1.5px solid rgba(244,241,234,.85);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  transition:transform .2s,background .2s;
+}
+.play svg{width:20px;height:20px;margin-inline-start:-3px}
+.video.featured .play{width:76px;height:76px}
+.video.featured .play svg{width:26px;height:26px}
+.video:hover .play,.video:focus-visible .play{transform:scale(1.08);background:var(--accent);border-color:var(--accent);color:#06211f}
+.video:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.video-title{
+  position:absolute;z-index:1;inset-inline:14px;bottom:12px;
+  font-size:16px;font-weight:500;line-height:1.3;
+}
+.video.featured .video-title{font-size:19px;bottom:16px}
+
+/* ---------- עליו ---------- */
+.about p{margin:0;font-size:19px;font-weight:300;max-width:60ch;white-space:pre-line}
+
+/* ---------- המלצות ---------- */
+.quotes{display:grid;gap:12px}
+.quote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.quote p{margin:0 0 10px;font-size:18px;font-weight:300}
+.quote footer{font-size:15px;color:var(--muted)}
+
+/* ---------- סגירה ---------- */
+.closing{text-align:center;padding-block:28px 40px}
+.closing h2{font-size:30px;margin-bottom:8px}
+.closing p{margin:0 0 22px;color:var(--muted)}
+.btn-wa{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--wa);color:#062b14;text-decoration:none;
+  font-weight:800;font-size:18px;line-height:1.2;border-radius:999px;padding:16px 26px;
+}
+.btn-wa svg{width:24px;height:24px;flex:none}
+.foot{text-align:center;color:var(--muted);font-size:14px;padding:8px var(--gutter) 24px}
+
+/* ---------- כפתור צף ---------- */
+.sticky{
+  position:fixed;z-index:20;inset-inline:0;bottom:0;
+  padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+  background:linear-gradient(to top,var(--bg) 55%,rgba(11,13,16,0));
+  display:flex;justify-content:center;pointer-events:none;
+}
+.sticky{transition:opacity .25s,transform .25s}
+.sticky.hide{opacity:0;transform:translateY(12px)}
+.sticky.hide .btn-wa{pointer-events:none}
+.sticky .btn-wa{pointer-events:auto;width:100%;max-width:440px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+
+/* ---------- נגן ---------- */
+dialog.player{
+  border:0;padding:0;background:transparent;color:var(--text);
+  max-width:none;max-height:none;width:100vw;height:100dvh;overflow:hidden;
+}
+dialog.player::backdrop{background:rgba(5,6,8,.92)}
+.player-inner{width:100%;height:100%;display:grid;place-items:center;padding:56px 12px 20px}
+.frame{
+  height:100%;max-height:calc(100dvh - 76px);aspect-ratio:9/16;max-width:100%;
+  background:#000;border-radius:14px;overflow:hidden;
+}
+dialog.player.wide .frame{height:auto;width:100%;max-width:1100px;aspect-ratio:16/9}
+.frame{position:relative}
+.frame::before{
+  content:"";position:absolute;inset:0;margin:auto;width:36px;height:36px;border-radius:50%;
+  border:3px solid rgba(244,241,234,.2);border-top-color:var(--accent);animation:spin .9s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.frame iframe{position:relative;width:100%;height:100%;border:0;display:block}
+.close{
+  position:absolute;top:10px;inset-inline-start:12px;width:40px;height:40px;border-radius:50%;
+  border:0;background:rgba(244,241,234,.14);color:var(--text);cursor:pointer;display:grid;place-items:center;
+}
+.close svg{width:18px;height:18px}
+.close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- מסכים רחבים ---------- */
+@media (min-width:860px){
+  body{font-size:18px}
+  .hero{min-height:0;align-items:center;max-width:1040px;margin-inline:auto;padding:48px var(--gutter) 8px;gap:48px}
+  .hero::after{display:none}
+  .hero-img{position:static;flex:none;width:400px;height:auto;aspect-ratio:2/3;border-radius:26px}
+  .hero-text{padding:0}
+  h1{font-size:clamp(72px,9vw,120px)}
+  .tagline{font-size:22px}
+  h2{font-size:32px}
+  .featured-wrap{margin-bottom:14px}
+  .videos{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;
+    overflow:visible;margin-inline:0;padding-inline:0;
+  }
+  .video,.video.wide{width:auto;max-width:none}
+  .video.wide{grid-column:span 2}
+  .video.featured{width:100%;max-width:400px}
+  .video.featured.wide{max-width:860px}
+  .quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sticky{inset-inline:auto 24px;bottom:12px;background:none;padding:12px 0}
+  .sticky .btn-wa{width:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .video img,.play,.sticky{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero-img" src="../images/{{photo}}" alt="{{name}} שר על הבמה" style="object-position:{{photoFocus}}" fetchpriority="high">
+  <div class="hero-text">
+    <p class="eyebrow">להקת {{band}}</p>
+    <h1>{{name}}</h1>
+    {{tagline}}
+    <a class="scroll-cue" href="#videos">
+      צפו ב{{firstName}} על הבמה
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v12M3 9l5 5 5-5"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section id="videos" class="wrap">
+    <h2>{{firstName}} <span>על הבמה</span></h2>
+{{featured}}
+{{videos}}
+  </section>
+{{about}}
+{{testimonials}}
+  <section class="closing wrap">
+    <h2>רוצים את {{firstName}} בחתונה שלכם?</h2>
+    <p>כתבו לנו את התאריך ונחזור אליכם עם כל הפרטים.</p>
+    <a class="btn-wa" href="{{waHref}}" target="_blank" rel="noopener">
+      {{waIcon}}
+      דברו איתנו בוואטסאפ
+    </a>
+  </section>
+</main>
+
+<p class="foot">להקת {{band}}</p>
+
+<div class="sticky">
+  <a class="btn-wa" href="{{waHref}}" target="_blank" rel="noopener">
+    {{waIcon}}
+    רוצים את {{firstName}} בחתונה שלכם?
+  </a>
+</div>
+
+<dialog class="player" aria-label="נגן וידאו">
+  <button class="close" type="button" aria-label="סגירה">
+    <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15"/></svg>
+  </button>
+  <div class="player-inner"><div class="frame"></div></div>
+</dialog>
+
+<script>
+(function(){
+  // התאמת הכרטיס לסרטון: אנכי או רוחבי, לפי התמונה הממוזערת
+  document.querySelectorAll('.video img').forEach(function(img){
+    var card = img.closest('.video');
+    function done(){
+      if (img.naturalWidth > img.naturalHeight) card.classList.add('wide');
+      card.classList.add('ready');
+    }
+    if (img.complete && img.naturalWidth) done();
+    else {
+      img.addEventListener('load', done);
+      img.addEventListener('error', function(){ img.remove(); });
+    }
+  });
+
+  // נגן: הסרטון נטען רק כשלוחצים עליו, כדי שהעמוד ייפתח מהר
+  var dlg = document.querySelector('dialog.player');
+  var frame = dlg.querySelector('.frame');
+  function close(){ if (dlg.open) dlg.close(); }
+  document.querySelectorAll('.video').forEach(function(card){
+    card.addEventListener('click', function(){
+      dlg.classList.toggle('wide', card.classList.contains('wide'));
+      var f = document.createElement('iframe');
+      f.src = card.dataset.src;
+      f.allow = 'autoplay; fullscreen; picture-in-picture';
+      f.allowFullscreen = true;
+      f.title = card.getAttribute('aria-label');
+      frame.replaceChildren(f);
+      dlg.showModal();
+    });
+  });
+  dlg.querySelector('.close').addEventListener('click', close);
+  dlg.addEventListener('click', function(e){
+    if (e.target === dlg || e.target.classList.contains('player-inner')) close();
+  });
+  dlg.addEventListener('close', function(){ frame.replaceChildren(); });
+
+  // הכפתור הצף נעלם כשכפתור הסיום כבר על המסך, כדי שלא יופיעו שניים
+  var sticky = document.querySelector('.sticky');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      sticky.classList.toggle('hide', entries[0].isIntersecting);
+    }, {threshold: .6}).observe(document.querySelector('.closing .btn-wa'));
+  }
+})();
+</script>
+</body>
+</html>

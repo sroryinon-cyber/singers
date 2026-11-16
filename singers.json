@@ -1,0 +1,46 @@
+{
+  "site": {
+    "band": "אהבתיה",
+    "whatsapp": "",
+    "siteUrl": "https://sroryinon-cyber.github.io/singers"
+  },
+  "singers": [
+    {
+      "slug": "ido-cohen",
+      "name": "עידו כהן",
+      "firstName": "עידו",
+      "tagline": "",
+      "photo": "ido-cohen.jpg",
+      "photoFocus": "50% 22%",
+      "about": "",
+      "videos": [
+        {
+          "driveId": "19D3B7FMmkggsBkMvCRxIb81MZuM08Uem",
+          "title": "בראשית",
+          "featured": true
+        },
+        {
+          "driveId": "16H4LS1fCqhqXXL1i1t_JJTJFeXEa8lSA",
+          "title": ""
+        },
+        {
+          "driveId": "1DoV-w3AfxMRhSAZSQUPel9Qh6MxyLXOW",
+          "title": ""
+        },
+        {
+          "driveId": "122W9uIiqxLN8I-wq8ifPc514ZHqz3YXw",
+          "title": ""
+        },
+        {
+          "driveId": "1qh0O9ySqe3ceyMZjD5Xi8kGnGPCR84MF",
+          "title": ""
+        },
+        {
+          "driveId": "1Q5x3Bfht-cy966QKBtXZNqhW9iYHkxxf",
+          "title": ""
+        }
+      ],
+      "testimonials": []
+    }
+  ]
+}
