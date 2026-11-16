@@ -46,14 +46,8 @@ a{color:inherit}
   content:"";position:absolute;inset:0;
   background:linear-gradient(to bottom,rgba(11,13,16,.15) 0%,rgba(11,13,16,0) 30%,rgba(11,13,16,.72) 70%,var(--bg) 100%);
 }
-.logo{
-  position:absolute;z-index:2;top:calc(16px + env(safe-area-inset-top));inset-inline-start:var(--gutter);
-  height:30px;width:auto;opacity:.95;filter:drop-shadow(0 1px 6px rgba(0,0,0,.45));
-}
 .hero-text{position:relative;z-index:1;width:100%;padding:0 var(--gutter) 34px}
-.eyebrow{
-  margin:0 0 6px;font-size:14px;font-weight:500;letter-spacing:.14em;color:var(--accent);
-}
+.eyebrow{display:block;height:34px;width:auto;margin:0 0 12px;filter:drop-shadow(0 1px 6px rgba(0,0,0,.45))}
 h1{
   margin:0;font-weight:800;line-height:1;
   font-size:clamp(52px,16vw,104px);letter-spacing:-.01em;text-wrap:balance;
@@ -161,11 +155,11 @@ dialog.player.wide .frame{width:min(100%,1100px,calc((100dvh - 76px) * 16 / 9));
   body{font-size:18px}
   .hero{min-height:0;align-items:center;max-width:1040px;margin-inline:auto;padding:48px var(--gutter) 8px;gap:48px}
   .hero::after{display:none}
-  .logo{top:12px}
   .hero-img{position:static;flex:none;width:400px;height:auto;aspect-ratio:2/3;border-radius:26px}
   .hero-text{padding:0}
   h1{font-size:clamp(72px,9vw,120px)}
   .tagline{font-size:22px}
+  .eyebrow{height:42px;margin-bottom:16px}
   h2{font-size:32px}
   .featured-wrap{margin-bottom:14px}
   .videos{
@@ -187,10 +181,9 @@ dialog.player.wide .frame{width:min(100%,1100px,calc((100dvh - 76px) * 16 / 9));
 <body>
 
 <header class="hero">
-  <img class="logo" src="../images/logo-white.png" alt="להקת אהבתיה" width="720" height="184">
   <img class="hero-img" src="../images/ido-cohen.jpg" alt="עידו כהן שר על הבמה" style="object-position:50% 22%" fetchpriority="high">
   <div class="hero-text">
-    <p class="eyebrow">להקת אהבתיה</p>
+    <img class="eyebrow" src="../images/logo-white.png" alt="להקת אהבתיה" width="720" height="184">
     <h1>עידו כהן</h1>
     
     <a class="scroll-cue" href="#videos">
