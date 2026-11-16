@@ -38,7 +38,6 @@ def video_card(video, singer, index):
 
     title = video.get("title", "").strip()
     label = f'{singer["name"]} – {title}' if title else f'{singer["name"]} – סרטון {index + 1}'
-    classes = "video featured" if video.get("featured") else "video"
     img = (
         f'<img src="{escape(thumb, quote=True)}" alt="" loading="lazy" referrerpolicy="no-referrer">'
         if thumb
@@ -46,20 +45,16 @@ def video_card(video, singer, index):
     )
     caption = f'<span class="video-title">{escape(title)}</span>' if title else ""
     return (
-        f'      <button type="button" class="{classes}" data-kind="{kind}" data-src="{escape(src, quote=True)}" '
+        f'      <button type="button" class="video" data-kind="{kind}" data-src="{escape(src, quote=True)}" '
         f'aria-label="{escape(label, quote=True)}">{img}{PLAY_ICON}{caption}</button>'
     )
 
 
 def render(template, site, singer):
-    # סרטון אחד מודגש למעלה (featured), השאר בשורה שגוללים הצידה
+    # כל הסרטונים באותו גודל, אחד מתחת לשני. הסרטון שמסומן featured מופיע ראשון
     videos = sorted(singer["videos"], key=lambda v: not v.get("featured"))
-    for extra in videos[1:]:
-        extra.pop("featured", None)
     cards = [video_card(v, singer, i) for i, v in enumerate(videos)]
-    featured_html, rest_html = "", ""
-    if videos and videos[0].get("featured"):
-        featured_html = f'    <div class="featured-wrap">\n{cards.pop(0)}\n    </div>'
+    rest_html = ""
     if cards:
         rest_html = '    <div class="videos">\n' + "\n".join(cards) + "\n    </div>"
 
@@ -100,7 +95,6 @@ def render(template, site, singer):
         "photo": escape(singer["photo"], quote=True),
         "photoFocus": escape(singer.get("photoFocus", "50% 30%"), quote=True),
         "tagline": f'<p class="tagline">{escape(tagline)}</p>' if tagline else "",
-        "featured": featured_html,
         "videos": rest_html,
         "about": about_html,
         "testimonials": quotes_html,

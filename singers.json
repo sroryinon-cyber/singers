@@ -14,10 +14,14 @@
       "about": "",
       "videos": [
         {
+          "file": "ido-cohen/4.mp4",
+          "poster": "ido-cohen/4.jpg",
+          "title": ""
+        },
+        {
           "file": "ido-cohen/1.mp4",
           "poster": "ido-cohen/1.jpg",
-          "title": "בראשית",
-          "featured": true
+          "title": "בראשית"
         },
         {
           "file": "ido-cohen/2.mp4",
@@ -27,11 +31,6 @@
         {
           "file": "ido-cohen/3.mp4",
           "poster": "ido-cohen/3.jpg",
-          "title": ""
-        },
-        {
-          "file": "ido-cohen/4.mp4",
-          "poster": "ido-cohen/4.jpg",
           "title": ""
         },
         {
