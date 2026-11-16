@@ -68,7 +68,7 @@ def render(template, site, singer):
     quotes = singer.get("testimonials", [])
 
     about_html = (
-        f'  <section class="about wrap">\n    <h2>כמה מילים על <span>{escape(singer["firstName"])}</span></h2>\n'
+        f'  <section class="about wrap">\n    <h2>כמה מילים על <em>{escape(singer["firstName"])}</em></h2>\n'
         f"    <p>{escape(about)}</p>\n  </section>"
         if about
         else ""
@@ -81,7 +81,7 @@ def render(template, site, singer):
             for q in quotes
         )
         quotes_html = (
-            '  <section class="wrap">\n    <h2>זוגות <span>מספרים</span></h2>\n'
+            '  <section class="wrap">\n    <h2>זוגות <em>מספרים</em></h2>\n'
             f'    <div class="quotes">\n{items}\n    </div>\n  </section>'
         )
 
@@ -136,8 +136,8 @@ def main():
         '<meta name="viewport" content="width=device-width, initial-scale=1">'
         '<meta name="robots" content="noindex, nofollow">'
         f'<title>להקת {escape(site["band"])}</title>'
-        '<body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#0b0d10;'
-        f'color:#f4f1ea;font-family:system-ui,sans-serif"><p>להקת {escape(site["band"])}</p></body></html>',
+        '<body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#FBF7F1;'
+        f'color:#2B2520;font-family:system-ui,sans-serif"><p>להקת {escape(site["band"])}</p></body></html>',
         encoding="utf-8",
     )
     (DIST / ".nojekyll").write_text("", encoding="utf-8")

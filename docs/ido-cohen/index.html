@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0b0d10">
+<meta name="theme-color" content="#1A1613">
 <title>עידו כהן · אהבתיה</title>
 <meta name="description" content="עידו כהן על הבמה – להקת אהבתיה">
 <meta property="og:type" content="website">
@@ -15,156 +15,185 @@
 <link rel="preload" as="image" href="../images/ido-cohen.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+/* אותה שפה עיצובית כמו הטפסים והצעת המחיר של אהבתיה:
+   נייר שנהב, דיו חם, הכתום הרך של הלב בלוגו, וכתב Rubik דק.
+   תמונות וסרטונים נשארים כהים עם כיתוב לבן מעליהם. */
 :root{
-  --bg:#0b0d10;
-  --surface:#151a20;
-  --line:#262d36;
-  --text:#f4f1ea;
-  --muted:#a9a79f;
-  --accent:#4fd1c5;      /* צבע המבטא – משנים כאן */
-  --radius:18px;
-  --gutter:16px;
+  --bg:#FBF7F1;
+  --surface:#FFFDF9;
+  --ink:#2B2520;
+  --mute:rgba(43,37,32,.68);
+  --line:rgba(43,37,32,.13);
+  --line-2:rgba(43,37,32,.24);
+  --amber:#F6A860;        /* מילוי, מסגרות וכיתוב מעל תמונות */
+  --amber-text:#B0601C;   /* אותו כתום, כהה מספיק לקריאה על הנייר */
+  --amber-ink:#2B2520;
+  --shade:26,22,19;       /* כמעט-שחור חם, לצעיף שמעל התמונות */
+  --display:"Rubik",system-ui,sans-serif;
+  --body:"Rubik",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --r-lg:24px;
+  --r:18px;
+  --gutter:20px;
+  --ease:cubic-bezier(.2,.75,.25,1);
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:"Heebo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  font-size:17px;line-height:1.6;
+  margin:0;background:var(--bg);color:var(--ink);
+  font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   padding-bottom:env(safe-area-inset-bottom);
 }
 img{display:block;max-width:100%}
 a{color:inherit}
-.wrap{max-width:1040px;margin-inline:auto;padding-inline:var(--gutter)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:1120px;margin-inline:auto;padding-inline:var(--gutter)}
 
 /* ---------- פתיחה ---------- */
-.hero{position:relative;min-height:86svh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero{position:relative;isolation:isolate;min-height:84svh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+.hero-img{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover}
 .hero::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(11,13,16,.15) 0%,rgba(11,13,16,0) 30%,rgba(11,13,16,.72) 70%,var(--bg) 100%);
+  content:"";position:absolute;z-index:-1;inset:0;
+  background:linear-gradient(180deg,
+    rgba(var(--shade),.3) 0%,rgba(var(--shade),.05) 26%,rgba(var(--shade),.62) 58%,
+    rgba(var(--shade),.78) 84%,var(--bg) 100%);
 }
-.hero-text{position:relative;z-index:1;width:100%;padding:0 var(--gutter) 34px}
-.eyebrow{display:block;height:34px;width:auto;margin:0 0 12px;filter:drop-shadow(0 1px 6px rgba(0,0,0,.45))}
+.hero-text{width:100%;padding:0 var(--gutter) clamp(84px,14svh,128px)}
+.brand{display:block;height:34px;width:auto;margin:0 0 14px;filter:drop-shadow(0 1px 8px rgba(var(--shade),.5))}
 h1{
-  margin:0;font-weight:800;line-height:1;
-  font-size:clamp(52px,16vw,104px);letter-spacing:-.01em;text-wrap:balance;
+  margin:0;font-family:var(--display);font-weight:300;line-height:1.02;
+  font-size:clamp(54px,16vw,104px);letter-spacing:-.01em;text-wrap:balance;
+  text-shadow:0 2px 24px rgba(var(--shade),.5);
 }
-.tagline{margin:14px 0 0;font-size:19px;font-weight:300;color:var(--text);max-width:30ch}
+.tagline{margin:14px 0 0;font-size:18px;color:rgba(255,255,255,.9);max-width:34ch;text-wrap:pretty}
 .scroll-cue{
-  display:inline-flex;align-items:center;gap:8px;margin-top:22px;
-  font-size:16px;font-weight:500;text-decoration:none;color:var(--text);
-  border:1px solid rgba(244,241,234,.35);border-radius:999px;padding:10px 20px;
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:rgba(11,13,16,.25);
+  display:inline-flex;align-items:center;gap:10px;margin-top:22px;min-height:48px;
+  font-size:16px;font-weight:400;letter-spacing:.04em;text-decoration:none;color:#fff;
+  border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:10px 22px;
+  background:rgba(var(--shade),.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
-.scroll-cue svg{width:16px;height:16px}
+.scroll-cue svg{width:16px;height:16px;color:var(--amber)}
 
 /* ---------- אזורים ---------- */
-section{padding-block:44px}
-h2{margin:0 0 18px;font-size:26px;font-weight:800;line-height:1.2;text-wrap:balance}
-h2 span{color:var(--accent)}
+section{padding-block:8px 56px}
+h2{
+  margin:0 0 22px;font-family:var(--display);font-weight:300;
+  font-size:clamp(30px,8vw,46px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance;
+}
+h2 em{font-style:normal;color:var(--amber-text)}
 
 /* ---------- סרטונים ---------- */
-.featured-wrap{display:flex;justify-content:center;margin-bottom:10px}
+.featured-wrap{display:flex;justify-content:center;margin-bottom:12px}
 .videos{
-  display:flex;align-items:flex-start;gap:10px;overflow-x:auto;
+  display:flex;align-items:flex-start;gap:12px;overflow-x:auto;
   scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);
-  margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);
+  margin-inline:calc(var(--gutter) * -1);padding:0 var(--gutter) 28px;
   scrollbar-width:none;
 }
 .videos::-webkit-scrollbar{display:none}
 .video{
   position:relative;flex:none;width:42vw;max-width:190px;aspect-ratio:9/16;
   scroll-snap-align:start;border:0;padding:0;margin:0;cursor:pointer;
-  background:var(--surface);border-radius:var(--radius);overflow:hidden;
-  color:var(--text);font:inherit;text-align:start;
+  background:#1A1613;border-radius:var(--r);overflow:hidden;isolation:isolate;
+  color:#fff;font:inherit;text-align:start;
+  box-shadow:0 18px 30px -22px rgba(var(--shade),.6);
   -webkit-tap-highlight-color:transparent;
 }
 .video.wide{width:80vw;max-width:420px;aspect-ratio:16/9}
-.video.featured{width:100%;max-width:calc(80svh * 9 / 16)}
+.video.featured{
+  width:100%;max-width:calc(78svh * 9 / 16);border-radius:var(--r-lg);
+  box-shadow:0 30px 60px -32px rgba(var(--shade),.6);
+}
 .video.featured.wide{max-width:none}
-.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s,transform .8s var(--ease)}
 .video.ready img{opacity:1}
 .video::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,0) 45%);
+  content:"";position:absolute;z-index:1;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(var(--shade),0) 50%,rgba(var(--shade),.8) 100%);
 }
 .play{
-  position:absolute;z-index:1;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;
-  display:grid;place-items:center;
-  background:rgba(11,13,16,.5);border:1.5px solid rgba(244,241,234,.85);
-  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
-  transition:transform .2s,background .2s;
+  position:absolute;z-index:2;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;
+  background:rgba(var(--shade),.45);border:1.5px solid rgba(247,248,252,.7);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:transform .3s var(--ease),background-color .3s,border-color .3s,color .3s;
 }
-.play svg{width:20px;height:20px;margin-inline-start:-3px}
+.play svg{width:18px;height:18px;margin-inline-start:-3px}
 .video.featured .play{width:76px;height:76px}
-.video.featured .play svg{width:26px;height:26px}
-.video:hover .play,.video:focus-visible .play{transform:scale(1.08);background:var(--accent);border-color:var(--accent);color:#06211f}
-.video:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.video-title{
-  position:absolute;z-index:1;inset-inline:14px;bottom:12px;
-  font-size:16px;font-weight:500;line-height:1.3;
+.video.featured .play svg{width:26px;height:26px;margin-inline-start:-4px}
+@media (hover:hover){
+  .video:hover img{transform:scale(1.03)}
+  .video:hover .play{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
 }
-.video.featured .video-title{font-size:19px;bottom:16px}
+.video:focus-visible .play{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.video-title{
+  position:absolute;z-index:2;inset-inline:14px;bottom:12px;
+  font-size:15px;font-weight:500;line-height:1.3;
+}
+.video.featured .video-title{inset-inline:20px;bottom:16px;font-size:17px;font-weight:600}
 
 /* ---------- עליו ---------- */
-.about p{margin:0;font-size:19px;font-weight:300;max-width:60ch;white-space:pre-line}
+.about p{margin:0;font-size:18px;color:var(--mute);max-width:46ch;white-space:pre-line;text-wrap:pretty}
 
 /* ---------- המלצות ---------- */
 .quotes{display:grid;gap:12px}
-.quote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.quote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
 .quote p{margin:0 0 10px;font-size:18px;font-weight:300}
-.quote footer{font-size:15px;color:var(--muted)}
+.quote footer{font-size:15px;color:var(--mute)}
 
 /* ---------- סיום ---------- */
-.foot{text-align:center;color:var(--muted);font-size:14px;padding:16px var(--gutter) 36px}
-.foot img{height:26px;width:auto;margin-inline:auto;opacity:.7}
-
+.foot{margin:0;padding:8px var(--gutter) 40px;display:flex;justify-content:center}
+.foot img{height:78px;width:auto}
 
 /* ---------- נגן ---------- */
 dialog.player{
-  border:0;padding:0;background:transparent;color:var(--text);
+  border:0;padding:0;background:transparent;color:#fff;
   max-width:none;max-height:none;width:100vw;height:100dvh;overflow:hidden;
 }
-dialog.player::backdrop{background:rgba(5,6,8,.92)}
+dialog.player::backdrop{background:rgba(var(--shade),.94)}
 .player-inner{width:100%;height:100%;display:grid;place-items:center;padding:56px 12px 20px}
 .frame{
-  width:min(100%,calc((100dvh - 76px) * 9 / 16));aspect-ratio:9/16;
+  position:relative;width:min(100%,calc((100dvh - 76px) * 9 / 16));aspect-ratio:9/16;
   background:#000;border-radius:14px;overflow:hidden;
 }
 dialog.player.wide .frame{width:min(100%,1100px,calc((100dvh - 76px) * 16 / 9));aspect-ratio:16/9}
-.frame{position:relative}
 .frame::before{
   content:"";position:absolute;inset:0;margin:auto;width:36px;height:36px;border-radius:50%;
-  border:3px solid rgba(244,241,234,.2);border-top-color:var(--accent);animation:spin .9s linear infinite;
+  border:3px solid rgba(255,255,255,.2);border-top-color:var(--amber);animation:spin .9s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 .frame iframe,.frame video{position:relative;width:100%;height:100%;border:0;display:block}
 .frame video{object-fit:contain;background:#000}
 .close{
   position:absolute;top:10px;inset-inline-start:12px;width:40px;height:40px;border-radius:50%;
-  border:0;background:rgba(244,241,234,.14);color:var(--text);cursor:pointer;display:grid;place-items:center;
+  border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:grid;place-items:center;
 }
 .close svg{width:18px;height:18px}
-.close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 /* ---------- מסכים רחבים ---------- */
 @media (min-width:860px){
-  body{font-size:18px}
-  .hero{min-height:0;align-items:center;max-width:1040px;margin-inline:auto;padding:48px var(--gutter) 8px;gap:48px}
+  :root{--gutter:40px}
+  .hero{
+    min-height:0;align-items:center;gap:56px;color:var(--ink);overflow:visible;
+    max-width:1120px;margin-inline:auto;padding:56px var(--gutter) 64px;
+  }
   .hero::after{display:none}
-  .hero-img{position:static;flex:none;width:400px;height:auto;aspect-ratio:2/3;border-radius:26px}
+  .hero-img{
+    position:static;flex:none;width:400px;height:auto;aspect-ratio:2/3;border-radius:var(--r-lg);
+    box-shadow:0 30px 60px -32px rgba(var(--shade),.6);
+  }
   .hero-text{padding:0}
-  h1{font-size:clamp(72px,9vw,120px)}
-  .tagline{font-size:22px}
-  .eyebrow{height:42px;margin-bottom:16px}
-  h2{font-size:32px}
-  .featured-wrap{margin-bottom:14px}
+  .brand{height:44px;margin-bottom:18px;filter:brightness(0);opacity:.82}
+  h1{font-size:clamp(72px,9vw,120px);text-shadow:none}
+  .tagline{font-size:20px;color:var(--mute)}
+  .scroll-cue{color:var(--ink);border-color:var(--line-2);background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .scroll-cue svg{color:var(--amber-text)}
+  .featured-wrap{margin-bottom:16px}
   .videos{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;
-    overflow:visible;margin-inline:0;padding-inline:0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;
+    overflow:visible;margin-inline:0;padding:0 0 12px;
   }
   .video,.video.wide{width:auto;max-width:none}
   .video.wide{grid-column:span 2}
@@ -183,7 +212,7 @@ dialog.player.wide .frame{width:min(100%,1100px,calc((100dvh - 76px) * 16 / 9));
 <header class="hero">
   <img class="hero-img" src="../images/ido-cohen.jpg" alt="עידו כהן שר על הבמה" style="object-position:50% 22%" fetchpriority="high">
   <div class="hero-text">
-    <img class="eyebrow" src="../images/logo-white.png" alt="להקת אהבתיה" width="720" height="184">
+    <img class="brand" src="../images/logo-white.png" alt="להקת אהבתיה" width="720" height="184">
     <h1>עידו כהן</h1>
     
     <a class="scroll-cue" href="#videos">
@@ -195,7 +224,7 @@ dialog.player.wide .frame{width:min(100%,1100px,calc((100dvh - 76px) * 16 / 9));
 
 <main>
   <section id="videos" class="wrap">
-    <h2>עידו <span>על הבמה</span></h2>
+    <h2>עידו <em>על הבמה</em></h2>
     <div class="featured-wrap">
       <button type="button" class="video featured" data-kind="video" data-src="../videos/ido-cohen/1.mp4" aria-label="עידו כהן – בראשית"><img src="../images/ido-cohen/1.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span><span class="video-title">בראשית</span></button>
     </div>
@@ -211,7 +240,7 @@ dialog.player.wide .frame{width:min(100%,1100px,calc((100dvh - 76px) * 16 / 9));
 
 </main>
 
-<p class="foot"><img src="../images/logo-white.png" alt="להקת אהבתיה" width="720" height="184" loading="lazy"></p>
+<p class="foot"><img src="../images/logo-dark.png" alt="להקת אהבתיה" width="640" height="496" loading="lazy"></p>
 
 <dialog class="player" aria-label="נגן וידאו">
   <button class="close" type="button" aria-label="סגירה">
