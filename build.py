@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """בונה עמוד לכל זמר מתוך singers.json + template.html אל התיקייה docs/.
+תמונות שמים ב-docs/images, סרטונים (mp4 מכווץ) ב-docs/videos.
 
 הרצה:  python3 build.py
 """
@@ -19,8 +20,18 @@ PLAY_ICON = '<span class="play"><svg viewBox="0 0 20 20" fill="currentColor" ari
 
 
 def video_card(video, singer, index):
-    """כרטיס סרטון. תומך ב-driveId (גוגל דרייב) או ב-embedUrl + thumb (כל אחסון אחר)."""
-    if video.get("driveId"):
+    """כרטיס סרטון.
+
+    file + poster  – קובץ mp4 ותמונה מתוך docs/videos ו-docs/images (מתנגן מיד, מומלץ)
+    driveId        – סרטון מגוגל דרייב (איטי יותר)
+    embedUrl+thumb – נגן מוטמע מכל אחסון אחר
+    """
+    kind = "embed"
+    if video.get("file"):
+        kind = "video"
+        src = "../videos/" + quote(video["file"])
+        thumb = "../images/" + quote(video["poster"]) if video.get("poster") else ""
+    elif video.get("driveId"):
         vid = quote(video["driveId"], safe="")
         src = f"https://drive.google.com/file/d/{vid}/preview"
         thumb = f"https://drive.google.com/thumbnail?id={vid}&sz=w720"
@@ -38,7 +49,7 @@ def video_card(video, singer, index):
     )
     caption = f'<span class="video-title">{escape(title)}</span>' if title else ""
     return (
-        f'      <button type="button" class="{classes}" data-src="{escape(src, quote=True)}" '
+        f'      <button type="button" class="{classes}" data-kind="{kind}" data-src="{escape(src, quote=True)}" '
         f'aria-label="{escape(label, quote=True)}">{img}{PLAY_ICON}{caption}</button>'
     )
 
@@ -115,10 +126,12 @@ def main():
     template = (ROOT / "template.html").read_text(encoding="utf-8")
     site = data["site"]
 
-    if DIST.exists():
-        shutil.rmtree(DIST)
-    DIST.mkdir()
-    shutil.copytree(ROOT / "images", DIST / "images")
+    # התמונות והסרטונים יושבים ישירות ב-docs/images וב-docs/videos ולא נמחקים בבנייה.
+    # רק תיקיות העמודים נבנות מחדש.
+    DIST.mkdir(exist_ok=True)
+    for old in DIST.iterdir():
+        if old.is_dir() and old.name not in ("images", "videos"):
+            shutil.rmtree(old)
 
     for singer in data["singers"]:
         out = DIST / singer["slug"]

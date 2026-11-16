@@ -15,28 +15,34 @@
       "about": "",
       "videos": [
         {
-          "driveId": "19D3B7FMmkggsBkMvCRxIb81MZuM08Uem",
+          "file": "ido-cohen/1.mp4",
+          "poster": "ido-cohen/1.jpg",
           "title": "בראשית",
           "featured": true
         },
         {
-          "driveId": "16H4LS1fCqhqXXL1i1t_JJTJFeXEa8lSA",
+          "file": "ido-cohen/2.mp4",
+          "poster": "ido-cohen/2.jpg",
           "title": ""
         },
         {
-          "driveId": "1DoV-w3AfxMRhSAZSQUPel9Qh6MxyLXOW",
+          "file": "ido-cohen/3.mp4",
+          "poster": "ido-cohen/3.jpg",
           "title": ""
         },
         {
-          "driveId": "122W9uIiqxLN8I-wq8ifPc514ZHqz3YXw",
+          "file": "ido-cohen/4.mp4",
+          "poster": "ido-cohen/4.jpg",
           "title": ""
         },
         {
-          "driveId": "1qh0O9ySqe3ceyMZjD5Xi8kGnGPCR84MF",
+          "file": "ido-cohen/5.mp4",
+          "poster": "ido-cohen/5.jpg",
           "title": ""
         },
         {
-          "driveId": "1Q5x3Bfht-cy966QKBtXZNqhW9iYHkxxf",
+          "file": "ido-cohen/6.mp4",
+          "poster": "ido-cohen/6.jpg",
           "title": ""
         }
       ],

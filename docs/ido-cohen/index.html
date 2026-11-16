@@ -153,17 +153,18 @@ dialog.player{
 dialog.player::backdrop{background:rgba(5,6,8,.92)}
 .player-inner{width:100%;height:100%;display:grid;place-items:center;padding:56px 12px 20px}
 .frame{
-  height:100%;max-height:calc(100dvh - 76px);aspect-ratio:9/16;max-width:100%;
+  width:min(100%,calc((100dvh - 76px) * 9 / 16));aspect-ratio:9/16;
   background:#000;border-radius:14px;overflow:hidden;
 }
-dialog.player.wide .frame{height:auto;width:100%;max-width:1100px;aspect-ratio:16/9}
+dialog.player.wide .frame{width:min(100%,1100px,calc((100dvh - 76px) * 16 / 9));aspect-ratio:16/9}
 .frame{position:relative}
 .frame::before{
   content:"";position:absolute;inset:0;margin:auto;width:36px;height:36px;border-radius:50%;
   border:3px solid rgba(244,241,234,.2);border-top-color:var(--accent);animation:spin .9s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-.frame iframe{position:relative;width:100%;height:100%;border:0;display:block}
+.frame iframe,.frame video{position:relative;width:100%;height:100%;border:0;display:block}
+.frame video{object-fit:contain;background:#000}
 .close{
   position:absolute;top:10px;inset-inline-start:12px;width:40px;height:40px;border-radius:50%;
   border:0;background:rgba(244,241,234,.14);color:var(--text);cursor:pointer;display:grid;place-items:center;
@@ -219,14 +220,14 @@ dialog.player.wide .frame{height:auto;width:100%;max-width:1100px;aspect-ratio:1
   <section id="videos" class="wrap">
     <h2>עידו <span>על הבמה</span></h2>
     <div class="featured-wrap">
-      <button type="button" class="video featured" data-src="https://drive.google.com/file/d/19D3B7FMmkggsBkMvCRxIb81MZuM08Uem/preview" aria-label="עידו כהן – בראשית"><img src="https://drive.google.com/thumbnail?id=19D3B7FMmkggsBkMvCRxIb81MZuM08Uem&amp;sz=w720" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span><span class="video-title">בראשית</span></button>
+      <button type="button" class="video featured" data-kind="video" data-src="../videos/ido-cohen/1.mp4" aria-label="עידו כהן – בראשית"><img src="../images/ido-cohen/1.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span><span class="video-title">בראשית</span></button>
     </div>
     <div class="videos">
-      <button type="button" class="video" data-src="https://drive.google.com/file/d/16H4LS1fCqhqXXL1i1t_JJTJFeXEa8lSA/preview" aria-label="עידו כהן – סרטון 2"><img src="https://drive.google.com/thumbnail?id=16H4LS1fCqhqXXL1i1t_JJTJFeXEa8lSA&amp;sz=w720" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
-      <button type="button" class="video" data-src="https://drive.google.com/file/d/1DoV-w3AfxMRhSAZSQUPel9Qh6MxyLXOW/preview" aria-label="עידו כהן – סרטון 3"><img src="https://drive.google.com/thumbnail?id=1DoV-w3AfxMRhSAZSQUPel9Qh6MxyLXOW&amp;sz=w720" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
-      <button type="button" class="video" data-src="https://drive.google.com/file/d/122W9uIiqxLN8I-wq8ifPc514ZHqz3YXw/preview" aria-label="עידו כהן – סרטון 4"><img src="https://drive.google.com/thumbnail?id=122W9uIiqxLN8I-wq8ifPc514ZHqz3YXw&amp;sz=w720" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
-      <button type="button" class="video" data-src="https://drive.google.com/file/d/1qh0O9ySqe3ceyMZjD5Xi8kGnGPCR84MF/preview" aria-label="עידו כהן – סרטון 5"><img src="https://drive.google.com/thumbnail?id=1qh0O9ySqe3ceyMZjD5Xi8kGnGPCR84MF&amp;sz=w720" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
-      <button type="button" class="video" data-src="https://drive.google.com/file/d/1Q5x3Bfht-cy966QKBtXZNqhW9iYHkxxf/preview" aria-label="עידו כהן – סרטון 6"><img src="https://drive.google.com/thumbnail?id=1Q5x3Bfht-cy966QKBtXZNqhW9iYHkxxf&amp;sz=w720" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
+      <button type="button" class="video" data-kind="video" data-src="../videos/ido-cohen/2.mp4" aria-label="עידו כהן – סרטון 2"><img src="../images/ido-cohen/2.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
+      <button type="button" class="video" data-kind="video" data-src="../videos/ido-cohen/3.mp4" aria-label="עידו כהן – סרטון 3"><img src="../images/ido-cohen/3.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
+      <button type="button" class="video" data-kind="video" data-src="../videos/ido-cohen/4.mp4" aria-label="עידו כהן – סרטון 4"><img src="../images/ido-cohen/4.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
+      <button type="button" class="video" data-kind="video" data-src="../videos/ido-cohen/5.mp4" aria-label="עידו כהן – סרטון 5"><img src="../images/ido-cohen/5.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
+      <button type="button" class="video" data-kind="video" data-src="../videos/ido-cohen/6.mp4" aria-label="עידו כהן – סרטון 6"><img src="../images/ido-cohen/6.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 3.5v13a.7.7 0 001.06.6l10.4-6.5a.7.7 0 000-1.2L7.06 2.9A.7.7 0 006 3.5z"/></svg></span></button>
     </div>
   </section>
 
@@ -280,13 +281,24 @@ dialog.player.wide .frame{height:auto;width:100%;max-width:1100px;aspect-ratio:1
   document.querySelectorAll('.video').forEach(function(card){
     card.addEventListener('click', function(){
       dlg.classList.toggle('wide', card.classList.contains('wide'));
-      var f = document.createElement('iframe');
-      f.src = card.dataset.src;
-      f.allow = 'autoplay; fullscreen; picture-in-picture';
-      f.allowFullscreen = true;
+      var f;
+      if (card.dataset.kind === 'video') {
+        f = document.createElement('video');
+        f.controls = true; f.autoplay = true; f.playsInline = true;
+        f.setAttribute('playsinline', '');
+        var poster = card.querySelector('img');
+        if (poster) f.poster = poster.currentSrc || poster.src;
+        f.src = card.dataset.src;
+      } else {
+        f = document.createElement('iframe');
+        f.src = card.dataset.src;
+        f.allow = 'autoplay; fullscreen; picture-in-picture';
+        f.allowFullscreen = true;
+      }
       f.title = card.getAttribute('aria-label');
       frame.replaceChildren(f);
       dlg.showModal();
+      if (f.play) { var p = f.play(); if (p && p.catch) p.catch(function(){}); }
     });
   });
   dlg.querySelector('.close').addEventListener('click', close);
